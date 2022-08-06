@@ -147,12 +147,23 @@ async function proxy(url) {
     return responseBody;
   } catch (e) {
     console.error(e)
-    return "";
+    return "Error";
+  }
+}
+
+// Returns true if we are logged in. Returns false if not logged in.
+function isLoggedIn() {
+  //Make sure we are logged in.
+  if (!loggedIn) {
+    return false
+  } else {
+    return true
   }
 }
 
 module.exports = {
   login,
   proxy,
-  gatherXIGAppId
+  gatherXIGAppId,
+  isLoggedIn,
 }
