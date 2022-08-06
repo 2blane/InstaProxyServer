@@ -13,7 +13,7 @@ InstaAutomator.login()
 app.get('/insta/v1', async (req, res) => {
   if (req.query.key != process.env.API_KEY) {
     //make sure the access key is valid
-    res.status(401).send("Invalid key should be: " + process.env.API_KEY + " found: " + req.query.key)
+    res.status(401).send("Invalid key")
   } else {
     //proxy the request.
     let result = await InstaAutomator.proxy(req.query.url)
