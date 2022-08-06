@@ -53,10 +53,15 @@ async function loginWithUI() {
   try {
     browser = await puppeteer.launch({
       headless: false,
+      executablePath: '/usr/bin/chromium-browser',
+      args: ['--no-sandbox', '--disable-gpu']
+    })
+    /*browser = await puppeteer.launch({
+      headless: false,
       args: [
         '--no-sandbox',
       ]
-    })
+    })*/
 
     const page = await browser.newPage()
     await page.goto(selector.login.url, {
@@ -85,10 +90,16 @@ async function loginHeadless() {
     log('LoginHeadless...')
     browser = await puppeteer.launch({
       headless: true,
+      executablePath: '/usr/bin/chromium-browser',
+      args: ['--no-sandbox', '--disable-gpu']
+    })
+    /*
+    browser = await puppeteer.launch({
+      headless: true,
       args: [
         '--no-sandbox',
       ]
-    })
+    })*/
     const page = await browser.newPage()
     await page.goto(selector.login.url, {
       waitUntil: 'networkidle0',

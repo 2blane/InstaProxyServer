@@ -19,7 +19,7 @@ app.get('/insta/v1', async (req, res) => {
     let result = await InstaAutomator.proxy(req.query.url)
     //if not logged in or an error -> return that error with a 401 code.
     if (result == "Not logged in" || result == "Error") {
-      res.status(401).send(req.query.url + result)
+      res.status(401).send(result)
     } else {
       //good response -> return that with a 200.
       res.send(result)
